@@ -5,8 +5,8 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     strategy:
-    matrix:
-      node-version: [14.x, 16.x, 18.x, 20.x]
+      matrix:
+        node-version: [14.x, 16.x, 18.x, 20.x]
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
@@ -19,12 +19,12 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-      - run: echo "🤖 Running testing steps."
       - uses: actions/checkout@v3
+      - run: echo "🤖 Running testing steps."
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci
+      - run: npm install
       - run: npm run build --if-present
       - run: npm test
