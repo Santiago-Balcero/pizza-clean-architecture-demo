@@ -18,6 +18,7 @@ export class PizzaRepository implements PizzaRepositoryI {
         const pizzasA = this.datasourceA.getPizzas();
         const pizzasB = this.datasourceB.getPizzas();
         const allPizzas = pizzasA.concat(pizzasB);
+        console.log('Pizzas received from datasources ->', allPizzas)
         return allPizzas;
     }
 
